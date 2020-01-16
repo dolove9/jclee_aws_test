@@ -2,6 +2,7 @@ package com.atoncorp.aws.test.web;
 
 import com.atoncorp.aws.test.service.PostsService;
 import com.atoncorp.aws.test.web.dto.PostsRequestDto;
+import com.atoncorp.aws.test.web.dto.PostsResponseDto;
 import com.atoncorp.aws.test.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,10 @@ public class PostsApiController {
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto updateRequestDto){
         return postsService.update(id, updateRequestDto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById(@PathVariable Long id){
+        return postsService.findById(id);
     }
 }
